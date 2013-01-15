@@ -25,14 +25,18 @@ define(function() {
 		// Add class or 'static' properties
 		klass.extend = function(obj) {
 			for(var prop in obj) {
-				klass[prop] = obj[prop]
+				if(obj.hasOwnProperty(prop)) {
+					klass[prop] = obj[prop];
+				}
 			}
 		};
 		
 		// Add instance properties
 		klass.include = function(obj) {
 			for(var prop in obj) {
-				klass.fn[prop] = obj[prop];
+				if(obj.hasOwnProperty(prop)) {
+					klass.fn[prop] = obj[prop];
+				}
 			}
 		};
 		
